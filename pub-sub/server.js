@@ -9,8 +9,8 @@ const publisher = redis.createClient();
 
 router.get('/', (ctx, next) => {
     publisher.publish('my-channel', JSON.stringify(ctx.request.query))
-    if(ctx.request.query.edad) {
-        publisher.publish('age-channel', JSON.stringify(ctx.request.query.edad))
+    if(ctx.request.query.age) {
+        publisher.publish('age-channel', JSON.stringify(ctx.request.query.age))
     }
     ctx.body = ctx.request.query
 })
