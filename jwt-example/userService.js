@@ -23,7 +23,4 @@ module.exports = class UserService {
         }
         return token;
     }
-    hasRole(user, required) {
-        return user === required
-    }
 }

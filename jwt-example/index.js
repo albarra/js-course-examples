@@ -16,21 +16,11 @@ app.use(bodyParser());
 app.use(jwt({ secret: credentials }).unless({ path: [/^\/public/] }));
 
 router.get('/read', (ctx, next) => {
-    if(myUserService.hasRole(ctx.state.user.role, "read") || myUserService.hasRole(ctx.state.user.role, "write")) {
-        ctx.body = 'read'
-    } else {
-        ctx.status = 401
-        ctx.body = {message: 'Unauthorized'}
-    }
+    ctx.body = 'read'
 });
 
 router.post('/write', (ctx, next) => {
-    if(myUserService.hasRole(ctx.state.user.role, "write")) {
-        ctx.body = 'write'
-    } else {
-        ctx.status = 401
-        ctx.body = {message: 'Unauthorized'}
-    }
+    ctx.body = 'write'
 });
 
 router.get('/public/info', (ctx, next) => {
